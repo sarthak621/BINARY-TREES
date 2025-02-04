@@ -19,7 +19,7 @@ public:
         vector<int>ans;
         if(root==NULL) return ans; 
 
-        while(true){
+        while(node!=NULL || !st.empty()){
             if(node!=NULL){
                 st.push(node);
                 node=node->left;
