@@ -150,3 +150,35 @@ cout << "~" << "\n";
 }
 
 // } Driver Code Ends
+
+
+//to make any binary tree to follow child sum property
+
+void modifiedRoot(Node *root){
+         // Add your code here
+     
+          Node* rootOfTree=root;
+              if(!root) return;
+          
+          int child=0;
+          
+          if(root->left) child+=root->left->data;
+          if(root->right) child+=root->right->data;
+          
+          if(child>=root->data) root->data=child;
+          
+          else{
+              if(root->left) root->left->data=child;
+              
+              if(root->right) root->right->data=child;
+              
+         }
+         
+         modifiedRoot(root->left);
+         modifiedRoot(root->right);
+         
+         int total=0;
+         if(root->left) total+=root->left->data;
+         if(root->right) total+=root->right->data;
+         if(root->left || root->right) root->data=total;
+    }
